@@ -20,6 +20,19 @@ const BOOLEAN_FILTERS: { key: string; label: string }[] = [
   { key: "is_medicinal", label: "Medicinal" },
   { key: "is_aquatic", label: "Aquatic" },
   { key: "is_tree_or_shrub", label: "Tree / Shrub" },
+  { key: "is_air_purifying", label: "Air Purifying" },
+];
+
+const SUNLIGHT_OPTIONS: { value: string; label: string }[] = [
+  { value: "full_sun", label: "Full Sun" },
+  { value: "partial_sun", label: "Partial Sun" },
+  { value: "low_light", label: "Low Light" },
+];
+
+const CLIMATE_OPTIONS: { value: string; label: string }[] = [
+  { value: "hot", label: "Hot" },
+  { value: "temperate", label: "Temperate" },
+  { value: "cool", label: "Cool" },
 ];
 
 export function ExplorePage() {
@@ -92,6 +105,32 @@ export function ExplorePage() {
           {CATEGORIES.map((c) => (
             <option key={c} value={c}>
               {c.replace(/_/g, " ")}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={params.get("sunlight_level") ?? ""}
+          onChange={(e) => updateParam("sunlight_level", e.target.value || null)}
+          className="px-3 py-1.5 rounded-full border border-[color:var(--color-border)] bg-white text-sm focus-ring"
+        >
+          <option value="">Any sunlight</option>
+          {SUNLIGHT_OPTIONS.map((o) => (
+            <option key={o.value} value={o.value}>
+              {o.label}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={params.get("climate_preference") ?? ""}
+          onChange={(e) => updateParam("climate_preference", e.target.value || null)}
+          className="px-3 py-1.5 rounded-full border border-[color:var(--color-border)] bg-white text-sm focus-ring"
+        >
+          <option value="">Any climate</option>
+          {CLIMATE_OPTIONS.map((o) => (
+            <option key={o.value} value={o.value}>
+              {o.label}
             </option>
           ))}
         </select>

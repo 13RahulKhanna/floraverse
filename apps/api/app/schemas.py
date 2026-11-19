@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, EmailStr, Field
 
-from app.models import ConservationStatus, GardenLogType, PlantCategory, WaveScale
+from app.models import ClimatePreference, ConservationStatus, GardenLogType, PlantCategory, SunlightLevel, WaveScale
 
 NOT_AVAILABLE = "Not available"
 
@@ -52,6 +52,9 @@ class PlantCard(BaseModel):
     category: PlantCategory
     image_url: str | None
     short_description: str
+    sunlight_level: SunlightLevel | None
+    climate_preference: ClimatePreference | None
+    is_air_purifying: bool
 
 
 class PlantDetail(BaseModel):
@@ -116,6 +119,9 @@ class PlantDetail(BaseModel):
     is_medicinal: bool
     is_aquatic: bool
     is_tree_or_shrub: bool
+    sunlight_level: SunlightLevel | None
+    climate_preference: ClimatePreference | None
+    is_air_purifying: bool
 
 
 class PlantListResponse(BaseModel):

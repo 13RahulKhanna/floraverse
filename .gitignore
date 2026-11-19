@@ -13,5 +13,10 @@ venv/
 pgdata/
 apps/api/uploads/*
 !apps/api/uploads/.gitkeep
+!apps/api/uploads/plants/
+apps/api/uploads/plants/*
+!apps/api/uploads/plants/*.jpg
+!apps/api/uploads/plants/*.png
+!apps/api/uploads/plants/*.webp
 .DS_Store
 *.log

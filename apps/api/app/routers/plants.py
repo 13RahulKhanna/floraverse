@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlmodel import Session, func, or_, select
 
 from app.db import get_session
-from app.models import Plant, PlantCategory
+from app.models import ClimatePreference, Plant, PlantCategory, SunlightLevel
 from app.schemas import PlantCard, PlantComparisonField, PlantComparisonResponse, PlantDetail, PlantListResponse
 from app.serializers import to_plant_card, to_plant_detail
 
@@ -24,6 +24,9 @@ def list_plants(
     is_medicinal: bool | None = None,
     is_aquatic: bool | None = None,
     is_tree_or_shrub: bool | None = None,
+    sunlight_level: SunlightLevel | None = None,
+    climate_preference: ClimatePreference | None = None,
+    is_air_purifying: bool | None = None,
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=20, ge=1, le=100),
     session: Session = Depends(get_session),
@@ -59,6 +62,12 @@ def list_plants(
         statement = statement.where(Plant.is_aquatic == is_aquatic)
     if is_tree_or_shrub is not None:
         statement = statement.where(Plant.is_tree_or_shrub == is_tree_or_shrub)
+    if sunlight_level:
+        statement = statement.where(Plant.sunlight_level == sunlight_level)
+    if climate_preference:
+        statement = statement.where(Plant.climate_preference == climate_preference)
+    if is_air_purifying is not None:
+        statement = statement.where(Plant.is_air_purifying == is_air_purifying)
 
     total = session.exec(select(func.count()).select_from(statement.subquery())).one()
 

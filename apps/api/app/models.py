@@ -30,6 +30,18 @@ class PlantCategory(str, Enum):
     CARNIVOROUS = "carnivorous"
 
 
+class SunlightLevel(str, Enum):
+    FULL_SUN = "full_sun"
+    PARTIAL_SUN = "partial_sun"
+    LOW_LIGHT = "low_light"
+
+
+class ClimatePreference(str, Enum):
+    HOT = "hot"
+    TEMPERATE = "temperate"
+    COOL = "cool"
+
+
 class ConservationStatus(str, Enum):
     LEAST_CONCERN = "least_concern"
     NEAR_THREATENED = "near_threatened"
@@ -130,6 +142,9 @@ class Plant(SQLModel, table=True):
     is_medicinal: bool = False
     is_aquatic: bool = False
     is_tree_or_shrub: bool = False
+    sunlight_level: SunlightLevel | None = Field(default=None, index=True)
+    climate_preference: ClimatePreference | None = Field(default=None, index=True)
+    is_air_purifying: bool = Field(default=False, index=True)
 
     is_plant_of_the_day: bool = False
     created_at: datetime = Field(default_factory=utcnow)

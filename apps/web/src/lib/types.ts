@@ -27,6 +27,9 @@ export type ConservationStatus =
   | "critically_endangered"
   | "not_evaluated";
 
+export type SunlightLevel = "full_sun" | "partial_sun" | "low_light";
+export type ClimatePreference = "hot" | "temperate" | "cool";
+
 export interface PlantCard {
   id: number;
   slug: string;
@@ -35,6 +38,9 @@ export interface PlantCard {
   category: PlantCategory;
   image_url: string | null;
   short_description: string;
+  sunlight_level: SunlightLevel | null;
+  climate_preference: ClimatePreference | null;
+  is_air_purifying: boolean;
 }
 
 export interface PlantDetail {
@@ -99,6 +105,9 @@ export interface PlantDetail {
   is_medicinal: boolean;
   is_aquatic: boolean;
   is_tree_or_shrub: boolean;
+  sunlight_level: SunlightLevel | null;
+  climate_preference: ClimatePreference | null;
+  is_air_purifying: boolean;
 }
 
 export interface PlantListResponse {

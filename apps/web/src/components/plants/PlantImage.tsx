@@ -10,9 +10,9 @@ const CATEGORY_GRADIENTS: Partial<Record<PlantCategory, string>> = {
   orchid: "from-[#f1e3ec] to-[#e2c9dc]",
 };
 
-// No real photo library is wired up (no image CDN/upload pipeline for the seeded
-// encyclopedia) — this renders an honest botanical placeholder tinted by category
-// rather than ever faking a photograph.
+// Most seeded plants have a real photo (sourced from Wikipedia/Wikimedia Commons by
+// scientific name — see app/fetch_plant_images.py). A species without a usable source
+// photo falls back to this honest category-tinted placeholder rather than a fake one.
 export function PlantImage({ src, category, className }: { src: string | null; category: PlantCategory; className?: string }) {
   const resolved = assetUrl(src);
   if (resolved) {

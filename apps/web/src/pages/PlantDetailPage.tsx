@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Droplets, Sun, Sprout, Heart, HeartOff, Loader2 } from "lucide-react";
+import { Droplets, Sun, CloudSun, CloudMoon, Thermometer, Wind, Sprout, Heart, HeartOff, Loader2 } from "lucide-react";
 import { useApi } from "@/lib/useApi";
 import { apiFetch, ApiError } from "@/lib/api";
 import { useAuth } from "@/lib/AuthContext";
@@ -10,6 +10,9 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { PlantImage } from "@/components/plants/PlantImage";
 import type { PlantDetail } from "@/lib/types";
+
+const SUNLIGHT_ICON = { full_sun: Sun, partial_sun: CloudSun, low_light: CloudMoon };
+const SUNLIGHT_LABEL = { full_sun: "Full Sun", partial_sun: "Partial Sun", low_light: "Low Light" };
 
 function Section({ title, rows }: { title: string; rows: [string, string][] }) {
   return (
@@ -58,6 +61,25 @@ export function PlantDetailPage() {
             <Badge tone={plant.conservation_status.includes("endanger") || plant.conservation_status === "vulnerable" ? "danger" : "neutral"}>
               {plant.conservation_status.replace(/_/g, " ")}
             </Badge>
+            {plant.sunlight_level ? (
+              <Badge tone="earth">
+                {(() => {
+                  const Icon = SUNLIGHT_ICON[plant.sunlight_level];
+                  return <Icon size={11} />;
+                })()}{" "}
+                {SUNLIGHT_LABEL[plant.sunlight_level]}
+              </Badge>
+            ) : null}
+            {plant.climate_preference ? (
+              <Badge tone="earth">
+                <Thermometer size={11} /> {plant.climate_preference.charAt(0).toUpperCase() + plant.climate_preference.slice(1)}
+              </Badge>
+            ) : null}
+            {plant.is_air_purifying ? (
+              <Badge tone="success">
+                <Wind size={11} /> Air Purifying
+              </Badge>
+            ) : null}
           </div>
           <h1 className="font-serif text-3xl font-bold">{plant.common_name}</h1>
           <p className="italic text-[color:var(--color-forest-600)]">{plant.scientific_name}</p>

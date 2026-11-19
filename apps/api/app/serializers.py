@@ -27,6 +27,9 @@ def to_plant_card(plant: Plant) -> PlantCard:
         category=plant.category,
         image_url=plant.image_url,
         short_description=plant_short_description(plant),
+        sunlight_level=plant.sunlight_level,
+        climate_preference=plant.climate_preference,
+        is_air_purifying=plant.is_air_purifying,
     )
 
 
@@ -87,6 +90,9 @@ def to_plant_detail(plant: Plant) -> PlantDetail:
         is_medicinal=plant.is_medicinal,
         is_aquatic=plant.is_aquatic,
         is_tree_or_shrub=plant.is_tree_or_shrub,
+        sunlight_level=plant.sunlight_level,
+        climate_preference=plant.climate_preference,
+        is_air_purifying=plant.is_air_purifying,
     )
 
 

@@ -8,7 +8,7 @@ built to be extended indefinitely; adding another species is one more dict in th
 plus a migration-free insert.
 """
 
-from app.models import ConservationStatus, PlantCategory
+from app.models import ClimatePreference, ConservationStatus, PlantCategory, SunlightLevel
 
 PLANTS: list[dict] = [
     {
@@ -55,6 +55,9 @@ PLANTS: list[dict] = [
         "is_outdoor": True,
         "is_flowering": True,
         "is_tree_or_shrub": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
     {
         "slug": "neem",
@@ -93,6 +96,9 @@ PLANTS: list[dict] = [
         "is_flowering": True,
         "is_medicinal": True,
         "is_tree_or_shrub": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
     {
         "slug": "rose",
@@ -135,6 +141,9 @@ PLANTS: list[dict] = [
         "is_outdoor": True,
         "is_flowering": True,
         "is_tree_or_shrub": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": False,
     },
     {
         "slug": "hibiscus",
@@ -173,6 +182,9 @@ PLANTS: list[dict] = [
         "is_flowering": True,
         "is_medicinal": True,
         "is_tree_or_shrub": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
     {
         "slug": "holy-basil-tulsi",
@@ -210,6 +222,9 @@ PLANTS: list[dict] = [
         "is_indoor": True,
         "is_flowering": True,
         "is_medicinal": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
     {
         "slug": "spearmint",
@@ -246,6 +261,9 @@ PLANTS: list[dict] = [
         "is_indoor": True,
         "is_flowering": True,
         "is_medicinal": True,
+        "sunlight_level": SunlightLevel.PARTIAL_SUN,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": False,
     },
     {
         "slug": "golden-pothos",
@@ -283,6 +301,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "It is called 'money plant' in many countries due to a folk belief that it brings financial luck.",
         "is_indoor": True,
         "is_outdoor": True,
+        "sunlight_level": SunlightLevel.LOW_LIGHT,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": True,
     },
     {
         "slug": "morning-glory",
@@ -315,6 +336,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Its flowers typically open at dawn and wilt by early afternoon, giving the plant its common name.",
         "is_outdoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": False,
     },
     {
         "slug": "pumpkin",
@@ -350,6 +374,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Pumpkins are technically a fruit, botanically classified as a type of berry called a pepo.",
         "is_outdoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": False,
     },
     {
         "slug": "star-lotus",
@@ -383,6 +410,9 @@ PLANTS: list[dict] = [
         "is_outdoor": True,
         "is_aquatic": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
     {
         "slug": "sacred-lotus",
@@ -417,6 +447,9 @@ PLANTS: list[dict] = [
         "is_aquatic": True,
         "is_flowering": True,
         "is_medicinal": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
     {
         "slug": "aloe-vera",
@@ -455,6 +488,9 @@ PLANTS: list[dict] = [
         "is_outdoor": True,
         "is_medicinal": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": True,
     },
     {
         "slug": "saguaro-cactus",
@@ -486,6 +522,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Saguaros are protected by law in Arizona; removing or damaging one without a permit is a criminal offense.",
         "is_outdoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": True,
     },
     {
         "slug": "prickly-pear",
@@ -518,6 +557,9 @@ PLANTS: list[dict] = [
         "is_outdoor": True,
         "is_flowering": True,
         "is_medicinal": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": True,
     },
     {
         "slug": "boston-fern",
@@ -552,6 +594,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Ferns are among the oldest plant lineages on Earth, with a fossil record dating back over 350 million years.",
         "is_indoor": True,
         "is_outdoor": True,
+        "sunlight_level": SunlightLevel.LOW_LIGHT,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": True,
     },
     {
         "slug": "bamboo",
@@ -584,6 +629,9 @@ PLANTS: list[dict] = [
         "conservation_status": ConservationStatus.LEAST_CONCERN,
         "interesting_facts": "Bamboo is botanically a grass, not a tree, despite its tree-like size.",
         "is_outdoor": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
     {
         "slug": "wheat",
@@ -617,6 +665,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Wheat provides roughly a fifth of the calories consumed by humans worldwide.",
         "is_outdoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": False,
     },
     {
         "slug": "moth-orchid",
@@ -651,6 +702,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Phalaenopsis amabilis is the national flower of Indonesia.",
         "is_indoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.PARTIAL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": True,
     },
     {
         "slug": "vanilla-orchid",
@@ -683,6 +737,9 @@ PLANTS: list[dict] = [
         "is_outdoor": True,
         "is_indoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.PARTIAL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": True,
     },
     {
         "slug": "snake-plant",
@@ -717,6 +774,9 @@ PLANTS: list[dict] = [
         "conservation_status": ConservationStatus.NOT_EVALUATED,
         "interesting_facts": "It was reclassified from the genus Sansevieria into Dracaena in 2017 based on genetic studies.",
         "is_indoor": True,
+        "sunlight_level": SunlightLevel.LOW_LIGHT,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": True,
     },
     {
         "slug": "peace-lily",
@@ -750,6 +810,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Despite the name, it is not a true lily — it belongs to the arum family (Araceae).",
         "is_indoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.LOW_LIGHT,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": True,
     },
     {
         "slug": "venus-flytrap",
@@ -782,6 +845,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Each trap can only close and reopen a limited number of times (roughly a dozen) before that specific trap dies.",
         "is_outdoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": False,
     },
     {
         "slug": "tropical-pitcher-plant",
@@ -813,6 +879,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Some Nepenthes species have been documented forming mutualistic relationships with small mammals that feed from the pitcher's nectar and leave droppings as fertilizer.",
         "is_outdoor": True,
         "is_indoor": True,
+        "sunlight_level": SunlightLevel.PARTIAL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
     {
         "slug": "sunflower",
@@ -848,6 +917,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Young sunflower buds track the sun from east to west during the day, a behavior called heliotropism; mature flowers generally stop tracking and face east.",
         "is_outdoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": False,
     },
     {
         "slug": "marigold",
@@ -879,6 +951,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Marigolds are a traditional symbol used in Día de los Muertos celebrations in Mexico, believed to guide spirits with their scent and color.",
         "is_outdoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
     {
         "slug": "ginkgo",
@@ -912,6 +987,9 @@ PLANTS: list[dict] = [
         "conservation_status": ConservationStatus.ENDANGERED,
         "interesting_facts": "Ginkgo is often called a 'living fossil' — it is the sole surviving species of a plant order dating back over 200 million years, and several trees survived near the hypocenter of the Hiroshima atomic bombing.",
         "is_outdoor": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.TEMPERATE,
+        "is_air_purifying": False,
     },
     {
         "slug": "giant-sequoia",
@@ -942,6 +1020,9 @@ PLANTS: list[dict] = [
         "conservation_status": ConservationStatus.ENDANGERED,
         "interesting_facts": "Giant sequoias were reassessed and classified as Endangered by the IUCN in 2022 due to the increasing severity of wildfires in their native range.",
         "is_outdoor": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.COOL,
+        "is_air_purifying": False,
     },
     {
         "slug": "corpse-flower",
@@ -974,6 +1055,9 @@ PLANTS: list[dict] = [
         "interesting_facts": "Because blooms are rare and last only a day or two, a flowering titan arum at a botanical garden often draws large public crowds and long queues.",
         "is_indoor": True,
         "is_flowering": True,
+        "sunlight_level": SunlightLevel.PARTIAL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
     {
         "slug": "welwitschia",
@@ -1001,6 +1085,9 @@ PLANTS: list[dict] = [
         "conservation_status": ConservationStatus.NEAR_THREATENED,
         "interesting_facts": "A single Welwitschia plant grows only two leaves in its entire lifetime — the same two leaves from germination, continuously growing and splitting at the tips.",
         "is_outdoor": True,
+        "sunlight_level": SunlightLevel.FULL_SUN,
+        "climate_preference": ClimatePreference.HOT,
+        "is_air_purifying": False,
     },
 ]
 
