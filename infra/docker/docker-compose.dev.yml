@@ -1,0 +1,25 @@
+# Local development Postgres. Published on 5433 (not 5432) so it can run alongside this
+# user's other local Postgres-backed project without a port clash. Explicit project `name`
+# below so Docker Compose doesn't derive the same default project name ("docker") as the
+# sibling typing-academy project, which also keeps its compose files under infra/docker/.
+name: floraverse-dev
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: floraverse
+      POSTGRES_USER: floraverse
+      POSTGRES_PASSWORD: devpassword
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - pgdata-dev:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U floraverse"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata-dev:

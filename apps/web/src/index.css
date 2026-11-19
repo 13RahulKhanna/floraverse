@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Georgia", "Times New Roman", serif;
+
+  /* Botanical palette: cream/white base, forest-green primary, warm earthy accents. */
+  --color-cream: #faf7f0;
+  --color-cream-deep: #f1ead9;
+  --color-paper: #ffffff;
+  --color-ink: #28331f;
+  --color-ink-muted: #5c6650;
+  --color-ink-faint: #8a9380;
+  --color-border: #e3ddc9;
+
+  --color-forest-50: #f1f7ee;
+  --color-forest-100: #dcebd3;
+  --color-forest-200: #b9d7a9;
+  --color-forest-400: #6ca455;
+  --color-forest-500: #4a7c39;
+  --color-forest-600: #3a6b2b;
+  --color-forest-700: #2d5421;
+  --color-forest-900: #1a3313;
+
+  --color-earth-400: #b08968;
+  --color-earth-500: #8a6a4d;
+  --color-earth-600: #6b5038;
+
+  --color-success: #2d7a3f;
+  --color-warning: #b8792a;
+  --color-danger: #b94a3f;
+}
+
+html,
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-forest-500);
+  outline-offset: 2px;
+}
+
+/* ========================= */
+/* LEAF CARD — the site's signature surface: a soft paper card with a subtle botanical
+   lift on hover, used for plant cards, article cards, and panels throughout. */
+/* ========================= */
+
+.leaf-card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(40, 51, 31, 0.04), 0 10px 30px -14px rgba(40, 51, 31, 0.12);
+  transition: box-shadow 220ms ease, transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms ease;
+}
+
+a.leaf-card:hover,
+button.leaf-card:hover,
+.leaf-card--interactive:hover {
+  box-shadow: 0 1px 2px rgba(40, 51, 31, 0.05), 0 24px 46px -18px rgba(74, 124, 57, 0.28);
+  border-color: var(--color-forest-200);
+  transform: translateY(-3px);
+}
+
+/* ========================= */
+/* BUTTONS */
+/* ========================= */
+
+.btn-leaf {
+  border-radius: 999px;
+  background: var(--color-forest-600);
+  color: white;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 10px 24px -10px rgba(45, 84, 33, 0.55);
+  transition: filter 160ms ease, transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-leaf:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-leaf:active {
+  filter: brightness(0.96);
+  transform: translateY(0);
+}
+
+.btn-leaf:disabled {
+  opacity: 0.5;
+  filter: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.btn-outline {
+  border-radius: 999px;
+  border: 1.5px solid var(--color-forest-500);
+  color: var(--color-forest-700);
+  background: transparent;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.btn-outline:hover {
+  background: var(--color-forest-50);
+}
+
+.btn-ghost {
+  border-radius: 999px;
+  color: var(--color-ink-muted);
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.btn-ghost:hover {
+  background: var(--color-cream-deep);
+  color: var(--color-ink);
+}
+
+/* ========================= */
+/* Decorative organic blob — used sparingly behind hero sections, never as full-bleed noise. */
+/* ========================= */
+
+.botanical-blob {
+  position: absolute;
+  border-radius: 46% 54% 60% 40% / 50% 45% 55% 50%;
+  background: radial-gradient(circle at 30% 30%, var(--color-forest-100), transparent 70%);
+  filter: blur(2px);
+  pointer-events: none;
+}
